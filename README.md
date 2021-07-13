@@ -17,6 +17,7 @@ pipenv --python 3.9
 ```shell
 pipenv install fastapi uvicorn SQLAlchemy graphene graphene-sqlalchemy
 ```
+<!-- Pillow, graphene-file-upload -->
 
 ```shell
 pipenv install yapf flake8 --dev
