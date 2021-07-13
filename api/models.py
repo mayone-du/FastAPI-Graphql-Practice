@@ -1,10 +1,10 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
-from .database import Base
+import database
 
 
-class User(Base):
+class User(database.Base):
 
     __tablename__ = "users"
 
@@ -16,7 +16,7 @@ class User(Base):
     items = relationship("Item", back_populates="owner")
 
 
-class Item(Base):
+class Item(database.Base):
 
     __tablename__ = "items"
 
