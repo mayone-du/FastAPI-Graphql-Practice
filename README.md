@@ -35,3 +35,11 @@ docker-compose up
 docker-compose exec app bash
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
+
+```/.env
+POSTGRES_USER=xxx
+POSTGRES_PASSWORD=xxx
+POSTGRES_SERVER=yy
+POSTGRES_PORT=0000
+POSTGRES_DB=zzzz
+```
