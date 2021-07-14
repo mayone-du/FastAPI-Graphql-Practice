@@ -19,7 +19,7 @@ RUN \
   graphene-sqlalchemy \
   # 周辺ツール
   python-decouple \
-  psycopg2 \
+  psycopg2-binary \
   # ダッシュボードの導入
   fastapi-admin
 

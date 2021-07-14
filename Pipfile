@@ -11,7 +11,6 @@ graphene = "*"
 graphene-sqlalchemy = "*"
 fastapi-admin = "*"
 python-decouple = "*"
-psycopg2 = "*"
 
 [dev-packages]
 yapf = "*"
