@@ -16,6 +16,8 @@ RUN \
   uvicorn \
   SQLAlchemy \
   graphene \
-  graphene-sqlalchemy
+  graphene-sqlalchemy \
+  # ダッシュボードの導入
+  fastapi-admin
 
 WORKDIR /src

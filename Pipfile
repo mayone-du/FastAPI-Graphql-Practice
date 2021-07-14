@@ -9,6 +9,7 @@ uvicorn = "*"
 sqlalchemy = "*"
 graphene = "*"
 graphene-sqlalchemy = "*"
+fastapi-admin = "*"
 
 [dev-packages]
 yapf = "*"
