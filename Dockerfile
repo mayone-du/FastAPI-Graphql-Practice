@@ -17,6 +17,9 @@ RUN \
   SQLAlchemy \
   graphene \
   graphene-sqlalchemy \
+  # 周辺ツール
+  python-decouple \
+  psycopg2 \
   # ダッシュボードの導入
   fastapi-admin
 
