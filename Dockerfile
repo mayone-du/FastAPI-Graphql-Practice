@@ -18,6 +18,9 @@ RUN \
   graphene \
   graphene-sqlalchemy \
   # 周辺ツール
+  pathlib[bcrypt] \
+  python-jose \
+  python-multipart \
   alembic \
   python-decouple \
   psycopg2-binary \

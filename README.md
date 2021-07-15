@@ -17,6 +17,7 @@ pipenv --python 3.9
 ```shell
 pipenv install fastapi uvicorn SQLAlchemy graphene graphene-sqlalchemy
 ```
+
 <!-- Pillow, graphene-file-upload -->
 
 ```shell
@@ -43,3 +44,7 @@ POSTGRES_SERVER=yy
 POSTGRES_PORT=0000
 POSTGRES_DB=zzzz
 ```
+
+## DB の初期化について
+
+初期化用の python ファイルなどを用意する必要がある。

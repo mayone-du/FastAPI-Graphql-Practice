@@ -11,6 +11,9 @@ graphene = "*"
 graphene-sqlalchemy = "*"
 fastapi-admin = "*"
 python-decouple = "*"
+python-jose = "*"
+python-multipart = "*"
+pathlib = {extras = ["bcrypt"], version = "*"}
 
 [dev-packages]
 yapf = "*"
