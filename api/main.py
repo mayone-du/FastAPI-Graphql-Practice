@@ -2,6 +2,7 @@ from typing import List
 
 import graphene
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from starlette.graphql import GraphQLApp
 
@@ -11,6 +12,8 @@ import database
 import schemas
 
 app = FastAPI()
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
 # Dependency
