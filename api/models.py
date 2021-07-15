@@ -2,7 +2,7 @@ from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
-from .database import Base
+import database
 
 #! 公式チュートリアル
 # class User(database.Base):
@@ -30,7 +30,7 @@ from .database import Base
 #! YouTube https://www.youtube.com/watch?v=Puvr82Cm26o
 
 
-class Post(Base):
+class Post(database.Base):
     __tablename__ = "post"
 
     id = Column(Integer, primary_key=True, index=True)

@@ -2,10 +2,9 @@ from typing import List, Optional
 
 import graphene
 from pydantic import BaseModel
-from typing_extensions import Required
 
-from .database import db_session
-from .models import Post
+import database
+import models
 
 # class ItemBase(BaseModel):
 #     title: str
@@ -37,20 +36,13 @@ from .models import Post
 #     class Config:
 #         orm_mode = True
 
-# class Query(graphene.ObjectType):
-#     hello = graphene.String(name=graphene.String(default_value="stranger"))
-
-#     def resolve_hello(self, info, name):
-#         # return User.parse_obj(User)
-#         return "Hello! : " + name
-
-
-db = db_session.session_factory()
+db = database.db_session.session_factory()
 
 
 class PostSchema(BaseModel):
     title: str
     content: str
+
 
 class CreateNewPost(graphene.Mutation):
     class Arguments:
@@ -62,13 +54,20 @@ class CreateNewPost(graphene.Mutation):
     @staticmethod
     def mutate(root, info, title, content):
         post = PostSchema(title=title, content=content)
-        db_post = Post(title=post.title, content=post.content)
+        db_post = models.Post(title=post.title, content=post.content)
         db.add(db_post)
         db.commit()
         db.refresh(db_post)
-        ok=True
+        ok = True
         return CreateNewPost(ok=ok)
 
+
+class Query(graphene.ObjectType):
+    hello = graphene.String(name=graphene.String(default_value="stranger"))
+
+    def resolve_hello(self, info, name):
+        # return User.parse_obj(User)
+        return "Hello! : " + name
 
 
 class Mutation(graphene.ObjectType):
