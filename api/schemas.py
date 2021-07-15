@@ -1,6 +1,8 @@
 from typing import List, Optional
 
 import graphene
+from graphene_sqlalchemy import SQLAlchemyObjectType
+from graphene_sqlalchemy.fields import SQLAlchemyConnectionField
 from pydantic import BaseModel
 
 import database
@@ -44,6 +46,12 @@ class PostSchema(BaseModel):
     content: str
 
 
+class PostModel(SQLAlchemyObjectType):
+    class Meta:
+        model = models.Post
+        interfaces = (graphene.relay.Node, )
+
+
 class CreateNewPost(graphene.Mutation):
     class Arguments:
         title = graphene.String(required=True)
@@ -63,11 +71,18 @@ class CreateNewPost(graphene.Mutation):
 
 
 class Query(graphene.ObjectType):
+    # node = graphene.relay.Node.Field()
     hello = graphene.String(name=graphene.String(default_value="stranger"))
+    # all_posts = graphene.Field(PostModel, id=graphene.NonNull())
+    all_posts = SQLAlchemyConnectionField(PostModel)
 
     def resolve_hello(self, info, name):
         # return User.parse_obj(User)
         return "Hello! : " + name
+
+    def resolve_all_posts(self, info):
+        query = PostModel.get_query(info)
+        return query.all()
 
 
 class Mutation(graphene.ObjectType):

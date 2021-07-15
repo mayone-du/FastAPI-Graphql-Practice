@@ -10,10 +10,11 @@ POSTGRES_SERVER = config('POSTGRES_SERVER')
 POSTGRES_DB = config('POSTGRES_DB')
 
 # SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
-SQLALCHEMY_DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}/{POSTGRES_DB}"
+SQLALCHEMY_DATABASE_URL = f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}/{POSTGRES_DB}"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 db_session = scoped_session(
     sessionmaker(autocommit=False, autoflush=False, bind=engine))
 
 Base = declarative_base()
+Base.query = db_session.query_property()

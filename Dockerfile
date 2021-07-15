@@ -18,6 +18,7 @@ RUN \
   graphene \
   graphene-sqlalchemy \
   # 周辺ツール
+  alembic \
   python-decouple \
   psycopg2-binary \
   # ダッシュボードの導入
