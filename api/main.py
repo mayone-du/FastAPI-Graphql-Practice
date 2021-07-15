@@ -1,7 +1,9 @@
 from typing import List
 
+import graphene
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
+from starlette.graphql import GraphQLApp
 
 import crud
 import database
@@ -53,3 +55,9 @@ def create_item_for_user(user_id: int,
 def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     items = crud.get_items(db, skip=skip, limit=limit)
     return items
+
+
+app.add_route(
+    "/",
+    GraphQLApp(schema=graphene.Schema(query=schemas.Query,
+                                      mutation=schemas.Mutation)))

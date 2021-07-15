@@ -1,5 +1,6 @@
 from typing import List, Optional
 
+import graphene
 from pydantic import BaseModel
 
 
@@ -40,3 +41,15 @@ class User(UserBase):
 
     class Config:
         orm_mode = True
+
+
+class Query(graphene.ObjectType):
+    hello = graphene.String(name=graphene.String(default_value="stranger"))
+
+    def resolve_hello(self, info, name):
+        # return User.parse_obj(User)
+        return "Hello! : " + name
+
+
+class Mutation(graphene.ObjectType):
+    pass
