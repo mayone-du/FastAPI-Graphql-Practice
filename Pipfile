@@ -13,7 +13,7 @@ fastapi-admin = "*"
 python-decouple = "*"
 python-jose = "*"
 python-multipart = "*"
-pathlib = {extras = ["bcrypt"], version = "*"}
+passlib = {extras = ["bcrypt"], version = "*"}
 
 [dev-packages]
 yapf = "*"

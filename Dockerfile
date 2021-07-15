@@ -18,7 +18,7 @@ RUN \
   graphene \
   graphene-sqlalchemy \
   # 周辺ツール
-  pathlib[bcrypt] \
+  passlib[bcrypt] \
   python-jose \
   python-multipart \
   alembic \
